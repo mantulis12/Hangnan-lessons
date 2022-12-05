@@ -7,15 +7,15 @@ namespace HangMan
     {
         static void Main(string[] args)
         {
-            bool k = true;
+            bool repeatProgram = true;
             char letter = ' ';
-            while (k)
+            while (repeatProgram)
             {
                 Program.hangmanLogic();
                 letter = Console.ReadKey().KeyChar;
                 if (letter != 'y')
                 {
-                    k = false;
+                    repeatProgram = false;
                 }
             }
         }
