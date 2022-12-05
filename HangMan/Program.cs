@@ -1,8 +1,26 @@
-﻿namespace HangMan
+﻿using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+
+namespace HangMan
 {
     internal class Program
     {
         static void Main(string[] args)
+        {
+            bool k = true;
+            char letter = ' ';
+            while (k)
+            {
+                Program.hangmanLogic();
+                letter = Console.ReadKey().KeyChar;
+                if (letter != 'y')
+                {
+                    k = false;
+                }
+            }
+        }
+
+        static void hangmanLogic()
         {
             RandomWordHandler wordHandler = new RandomWordHandler();
             wordHandler.getTheWord();
@@ -40,22 +58,13 @@
             {
                 Console.WriteLine("You guessed the word");
                 Console.WriteLine("Do you want to restart? y/n");
-                letter = Console.ReadKey().KeyChar;
             }
             else
             {
                 painter.paint(badLetters.Count);
                 Console.WriteLine("You hanged yourself");
                 Console.WriteLine("Do you want to restart? y/n");
-                letter = Console.ReadKey().KeyChar;
             }
-
-            if (letter == 'y')
-            {
-                Main(args);
-            }
-
-
         }
     }
 
